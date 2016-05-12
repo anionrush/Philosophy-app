@@ -1,0 +1,61 @@
+<style type="text/css">
+	/* Without this class/container, the scaled iframes maintain
+   their massive (pre-scaled) dimensions */
+.preview {
+  width: 140px; height: 140px;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+}
+
+/* iframes are initially set large enough to get a good view
+   of the contained page. They are then scaled down to one-
+   tenth their original size */
+.preview iframe {
+  width: 1020px; height: 768px;
+  -webkit-transform: scale(.2); -webkit-transform-origin: 0 0;
+  -moz-transform: scale(.2); -moz-transform-origin: 0 0;
+  -ms-transform: scale(.2); -ms-transform-origin: 0 0;
+  -o-transform: scale(.2); -o-transform-origin: 0 0;
+  transform: scale(.2); transform-origin: 0 0;
+}
+
+/* Prevents the user from interacting with the iframe page */
+.preview:after,
+.preview::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+}
+</style>
+
+<div class="row">
+<% @arguments.each do |argument| %>
+
+   <div class="col-md-3 img col-sm-3 col-xs-6" style="text-align:center; ">
+   		<a href=<%="arguments/#{argument.id}" %>> <div class="preview"> <iframe  id="form" height="140" width="140" src= <%="arguments/#{argument.id}" %>> </iframe> </div> </a>
+
+   		<div class="row" style=" margin: 10px; text-align:center;">
+   			<div class="col-md-12">
+   				<p> <%= argument.title %> </p>
+   				<p> <%= argument.tag_list %> </p>
+   			</div> 
+   		</div>
+   </div>
+
+<% end %>
+
+ </div>
+<!--  outline: solid black 1px; -->
+
+    <a href="/arguments/new"><span class="glyphicon glyphicon-plus pull-right" style="color:orange; font-size: 2em; position: absolute;
+  top: 97%;
+  left: 120%;"></span></a>
+
+
+
+
+
+
