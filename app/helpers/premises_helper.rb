@@ -14,7 +14,7 @@ module PremisesHelper
 
 		if premise.sub_premises.count != 0
 			premise.sub_premises.each do |sub_premise|
-				res << "<li> #{premise.body} </li> #{premise_helper(sub_premise)}"
+				res << "<li> #{sub_premise.body} </li> #{premise_helper(sub_premise)}"
 			end
 		end
 
