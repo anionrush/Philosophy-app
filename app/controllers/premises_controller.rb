@@ -37,9 +37,22 @@ class PremisesController < ApplicationController
   end
 
   def update
+    @premise = Premise.find(params[:id])
+    @premise.body = premise_params[:body]
+
+   if @premise.save
+    @argument = Argument.find(params[:argument_id])
+    flash[:notice] = "argument was updated."
+     redirect_to edit_argument_path(@argument)
+   else
+     flash.now[:alert] = "Error saving argument. Please try again."
+     render :edit
+   end
   end
 
   def edit
+    @premise = Premise.find(params[:id])
+    @argument = Argument.find(params[:argument_id])
   end
 
   def destroy

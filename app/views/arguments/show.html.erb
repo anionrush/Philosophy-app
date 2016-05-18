@@ -1,3 +1,13 @@
 <style> body {background-color:white !important;}</style>
-<%= wrap_arg(@argument) %>
+<div class="row"> 
+	<div class="col-md-12">
+		<h2> <%= @argument.title %>  	</h2>
+	</div>
+	<div class="col-md-12"> <p> <%= wrap_arg(@argument) %> </p> 
+	</div>
+	<div class="col-md-12" style="margin-bottom: 10px; margin-top: 10px;"><%= button_to('Edit argument', edit_argument_path(@argument), :class => 'btn btn-large btn-warning text-center',  method: :get)  %>
+</div>
+
+
+
 
