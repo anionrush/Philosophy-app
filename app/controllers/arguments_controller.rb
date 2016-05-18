@@ -39,6 +39,15 @@ class ArgumentsController < ApplicationController
   end
 
   def destroy
+    @argument = Argument.find(params[:id])
+
+    if @argument.destroy
+      flash[:notice] = "\"#{@argument.title}\" was deleted successfully."
+      redirect_to action: :index
+    else
+      flash.now[:alert] = "There was an error deleting the argument."
+      render :show
+    end
   end
 
   def index

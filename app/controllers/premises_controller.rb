@@ -56,6 +56,16 @@ class PremisesController < ApplicationController
   end
 
   def destroy
+    @premise = Premise.find(params[:id])
+
+    if @premise.destroy
+      @argument = Argument.find(params[:argument_id])
+      flash[:notice] = "\"#{@premise.body}\" was deleted successfully."
+      redirect_to edit_argument_path(@argument)
+    else
+      flash.now[:alert] = "There was an error deleting the argument."
+      redirect_to edit_argument_path(@argument)
+    end
   end
 
   def index
