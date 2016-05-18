@@ -2,8 +2,14 @@ Rails.application.routes.draw do
   root 'arguments#index'
 
   resources :arguments do  
-    resources :premises
+    resources :premises do 
+      resources :premises
+    end
   end
+
+  # resources :premises, only: [:new, :create] do  
+  #   resources :premises, only: [:new, :create]
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

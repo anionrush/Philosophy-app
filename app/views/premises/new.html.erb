@@ -1,2 +1,30 @@
-<h1>Premises#new</h1>
-<p>Find me in app/views/premises/new.html.erb</p>
+
+<% if @parent_premise != nil %>
+<h1>New Sub Premise</h1>
+    <%= form_for [@argument, @parent_premise, @premise] do |f| %>
+       <div class="form-group">
+         <%= f.label :body%>
+         <%= f.text_field :body, class: 'form-control', placeholder: "Enter premise text" %>
+       </div>
+       <%= f.submit "Create Premise", class: 'btn btn-success', style: 'margin-bottom: 10px;'%>
+     <% end %>
+   </div>
+ </div>
+
+
+<% else @argument != nil %> 
+<h1>New Premise</h1>
+ <div class="row">
+   <div class="col-md-8">
+     <%= form_for [@argument, @premise] do |f| %>
+       <div class="form-group">
+         <%= f.label :body%>
+         <%= f.text_field :body, class: 'form-control', placeholder: "Enter premise text" %>
+       </div>
+       <%= f.submit "Create Premise", class: 'btn btn-success', style: 'margin-bottom: 10px;'%>
+     <% end %>
+   </div>
+ </div>
+
+<% end %>
+

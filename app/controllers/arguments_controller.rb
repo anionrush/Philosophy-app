@@ -7,7 +7,7 @@ class ArgumentsController < ApplicationController
     @argument = Argument.new(argument_params)
  
      if @argument.save
-      redirect_to @argument, notice: "argument was saved successfully."
+      redirect_to edit_argument_path(@argument), notice: "argument was saved successfully."
      else
        flash.now[:alert] = "Error creating argument. Please try again."
        render :new
@@ -15,9 +15,27 @@ class ArgumentsController < ApplicationController
   end
 
   def update
+    @argument = Argument.find(params[:id])
+  
+    @argument.title = argument_params[:title]
+    @argument.tag_list.split.each do |tag|
+      @argument.tag_list.remove(tag)
+    end
+    argument_params[:tag_list].split.each do |tag|
+      @argument.tag_list.add(tag, parse: true)
+    end
+
+   if @argument.save
+    flash[:notice] = "argument was updated."
+     redirect_to @argument
+   else
+     flash.now[:alert] = "Error saving argument. Please try again."
+     render :edit
+   end
   end
 
   def edit
+    @argument = Argument.find(params[:id])
   end
 
   def destroy

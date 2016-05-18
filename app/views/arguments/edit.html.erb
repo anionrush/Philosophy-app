@@ -1,2 +1,36 @@
-<h1>Arguments#edit</h1>
-<p>Find me in app/views/arguments/edit.html.erb</p>
+<h1 style="text-align:center;">Edit Title/Tags For: <%= @argument.title %> </h1>
+ 
+ <div class="row">
+   <div class="col-md-12" style="text-align:center;">
+     <%= form_for @argument do |f| %>
+       <div class="form-group">
+         <%= f.label :title %>
+         <%= f.text_field :title, class: 'form-control', placeholder: "Enter new argument name" %>
+       </div>
+       <div class="form-group">
+         <%= f.label :tag_list %>
+         <%= f.text_field :tag_list, rows: 8, class: 'form-control', placeholder: "Enter seperate tags with either a comma or space" %>
+       </div>
+       <%= f.submit "Save Changes", class: 'btn btn-success' %>
+     <% end %>
+   </div>
+ </div>
+
+<h1 style="text-align:center;">Premise Management </h1>
+ <div class="row">
+  <div class="col-md-12" style="text-align:center; margin-top: 10px; ">
+    <%= button_to('Add Main Premise', new_argument_premise_path(@argument), :class => 'btn btn-large btn-primary', method: :get)  %>
+  </div>
+</div>
+
+
+
+
+
+
+
+<p> <%= wrap_arg_edit(@argument) %> </p> 
+
+
+
+
