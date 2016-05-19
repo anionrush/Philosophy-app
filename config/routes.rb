@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'arguments#index'
+  root 'welcome#index'
 
   resources :arguments do  
     resources :premises do 

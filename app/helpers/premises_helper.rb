@@ -2,7 +2,9 @@ module PremisesHelper
 	def wrap_arg(argument)
 		res = "<ol>"
 		argument.premises.each do |premise|
-			res << "<li> #{premise.body} #{premise_helper(premise)}</li>"
+			res << "<li> #{premise.body} 
+			<button class='glyphicon glyphicon-chevron-down' data-toggle='collapse' data-target='#coll#{premise.id}'></button> 
+			#{premise_helper(premise)}  </li> "
 		end
 		res << "</ol>"
 
@@ -10,11 +12,16 @@ module PremisesHelper
 	end
 
 	def premise_helper(premise)
-		res = "<ol>"
+
+		res = "<ol id=coll#{premise.id} class='collapse'>"
 
 		if premise.sub_premises.count != 0
 			premise.sub_premises.each do |sub_premise|
-				res << "<li> #{sub_premise.body} </li> #{premise_helper(sub_premise)}"
+				if sub_premise.sub_premises.count != 0
+					res << "<li> #{sub_premise.body} <button class='glyphicon glyphicon-chevron-down' data-toggle='collapse' data-target='#coll#{sub_premise.id}'></button> </li> #{premise_helper(sub_premise)}"
+				else
+					res << "<li> #{sub_premise.body} </li> #{premise_helper(sub_premise)}"
+				end			
 			end
 		end
 

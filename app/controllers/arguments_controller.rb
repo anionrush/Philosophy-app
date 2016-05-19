@@ -52,9 +52,9 @@ class ArgumentsController < ApplicationController
 
   def index
     if not (params[:search] and params[:search] != "")
-      @arguments = Argument.all
+      @arguments = Argument.paginate(:page => params[:page], :per_page => 20)
     else
-      @arguments = Argument.tagged_with("#{params[:search]}")
+      @arguments = Argument.tagged_with("#{params[:search]}").paginate(:page => params[:page], :per_page => 20)
       params.delete :search
     end
   end

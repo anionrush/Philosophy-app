@@ -31,9 +31,13 @@
 }
 </style>
 
+<div class="jumbotron">
+   <h1 style="text-align:center;">Name Placeholder</h1>
+ </div>
+
+<h2>View Sample Arguments:</h2>
 <div class="row">
-<%= will_paginate @arguments %>
-<% @arguments.each do |argument| %>
+<% @arguments.sample(4).each do |argument| %>
 
    <div class="col-md-3 img col-sm-3 col-xs-6" style="text-align:center; ">
    		<a href=<%="arguments/#{argument.id}" %>> <div class="preview"> <iframe  id="form" height="140" width="140" src= <%="arguments/#{argument.id}" %>> </iframe> </div> </a>
@@ -56,7 +60,7 @@
   left: 120%;"></span></a>
 
 
-<%= will_paginate @arguments %>
+
 
 
 
