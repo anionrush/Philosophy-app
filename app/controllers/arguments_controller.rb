@@ -7,17 +7,19 @@ class ArgumentsController < ApplicationController
     @argument = Argument.new(argument_params)
  
      if @argument.save
-      redirect_to edit_argument_path(@argument), notice: "argument was saved successfully."
+      redirect_to edit_argument_path(@argument), notice: "Argument was saved successfully."
      else
        flash.now[:alert] = "Error creating argument. Please try again."
        render :new
      end
+
   end
 
   def update
     @argument = Argument.find(params[:id])
-  
     @argument.title = argument_params[:title]
+
+    #adding tags to argument
     @argument.tag_list.split.each do |tag|
       @argument.tag_list.remove(tag)
     end
@@ -26,7 +28,7 @@ class ArgumentsController < ApplicationController
     end
 
    if @argument.save
-    flash[:notice] = "argument was updated."
+    flash[:notice] = "Argument was updated."
      redirect_to @argument
    else
      flash.now[:alert] = "Error saving argument. Please try again."
@@ -51,11 +53,12 @@ class ArgumentsController < ApplicationController
   end
 
   def index
+    #returns all arguments if params search is nil or empty string passed
     if not (params[:search] and params[:search] != "")
       @arguments = Argument.paginate(:page => params[:page], :per_page => 12)
     else
+      #returns all arguments if argument's tag is entered into search bar
       @arguments = Argument.tagged_with("#{params[:search]}").paginate(:page => params[:page], :per_page => 12)
-
     end
   end
 

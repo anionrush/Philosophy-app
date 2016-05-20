@@ -9,7 +9,7 @@
 list = ["epistemology", "logic", "metaphysics", "ethics", "ancient"]
 
 100.times do
-  Argument.create!( title: "This is the title for blah" )
+  Argument.create!( title: Faker::Hipster.sentence(10) )
 end
 
 arguments = Argument.all
@@ -18,32 +18,28 @@ arguments.each do |argument|
 	argument.tag_list.add("#{list.sample}")
 	argument.save
 	argument.reload
-	puts argument.tags
 end
 
-3.times do
+300.times do
 	Premise.create!(
 		argument: arguments.sample,
-		body: "a;ldsfa lkajsdhf ip lkavlksjhdf owiur m asldf ajkd lsdfsd",
+		body: Faker::Hipster.sentence(10),
 		sub: false
 		)
 end
 
-premises = Premise.all
-
-10.times do 
+300.times do 
 	Premise.create!(
-		parent_premise: premises.sample,
-		body: "this is a sub premise blah blah blah blah",
+		parent_premise: Premise.all.sample,
+		body: Faker::Hipster.sentence(10),
 		sub: false )
 end
 
-p = Premise.first.sub_premises.first
 
-5.times do 
+500.times do 
 	Premise.create!(
-		parent_premise: p,
-		body: "this is a sub premise blah blah blah blah",
+		parent_premise: Premise.where(argument_id: nil).sample,
+		body: Faker::Hipster.sentence(10),
 		sub: false )
 end
 

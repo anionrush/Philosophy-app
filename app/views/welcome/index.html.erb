@@ -1,59 +1,33 @@
-<style type="text/css">
-	/* Without this class/container, the scaled iframes maintain
-   their massive (pre-scaled) dimensions */
-.preview {
-  width: 140px; height: 140px;
-  overflow: hidden;
-  display: inline-block;
-  position: relative;
-}
-
-/* iframes are initially set large enough to get a good view
-   of the contained page. They are then scaled down to one-
-   tenth their original size */
-.preview iframe {
-  width: 1020px; height: 768px;
-  -webkit-transform: scale(.2); -webkit-transform-origin: 0 0;
-  -moz-transform: scale(.2); -moz-transform-origin: 0 0;
-  -ms-transform: scale(.2); -ms-transform-origin: 0 0;
-  -o-transform: scale(.2); -o-transform-origin: 0 0;
-  transform: scale(.2); transform-origin: 0 0;
-}
-
-/* Prevents the user from interacting with the iframe page */
-.preview:after,
-.preview::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%; height: 100%;
-  top: 0; left: 0;
-}
-</style>
-
 <div class="jumbotron">
-   <h1 style="text-align:center;">Name Placeholder</h1>
- </div>
+  <h1 style="text-align:center;">Name Placeholder</h1>
+
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-sm-4 col-sm-offset-4">
+      <%= link_to "Browse Arguments", arguments_path(:search => ""), :class => "btn btn-warning" %>
+    </div>
+  </div>
+
+</div>
 
 <h2>View Sample Arguments:</h2>
-<div class="row">
-<% @arguments.sample(4).each do |argument| %>
+  <div class="row">
 
-   <div class="col-md-3 img col-sm-3 col-xs-6" style="text-align:center; ">
-   		<a href=<%="arguments/#{argument.id}" %>> <div class="preview"> <iframe  id="form" height="140" width="140" src= <%="arguments/#{argument.id}" %>> </iframe> </div> </a>
+    <% @arguments.sample(4).each do |argument| %>
+      <div class="col-md-3 img col-sm-6 col-xs-6" style="text-align:center; ">
+   	    <%= link_to argument_path(argument) do %> 
+          <div class="preview"> 
+            <iframe  id="form" height="140" width="140" src= <%="arguments/#{argument.id}" %>> </iframe> 
+          </div> 
+        <% end %>
 
-   		<div class="row" style=" margin: 10px; text-align:center;">
-   			<div class="col-md-12">
-   				<p> <%= argument.title %> </p>
-   				<p> <%= argument.tag_list %> </p>
-   			</div> 
-   		</div>
-   </div>
+        <p class="arg-title" > 
+          <%= argument.title %> 
+        </p>      
+      </div>
+    <% end %>
 
-<% end %>
+  </div>
 
- </div>
-<!--  outline: solid black 1px; -->
 
 
 
