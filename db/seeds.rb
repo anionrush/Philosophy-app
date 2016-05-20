@@ -9,7 +9,7 @@
 list = ["epistemology", "logic", "metaphysics", "ethics", "ancient"]
 
 100.times do
-  Argument.create!( title: Faker::Hipster.sentence(10) )
+  Argument.create!( title: "Example Argument Title Placeholder Text" )
 end
 
 arguments = Argument.all
