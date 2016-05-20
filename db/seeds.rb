@@ -8,7 +8,7 @@
 
 list = ["epistemology", "logic", "metaphysics", "ethics", "ancient"]
 
-50.times do
+100.times do
   Argument.create!( title: "This is the title for blah" )
 end
 

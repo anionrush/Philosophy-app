@@ -16,7 +16,7 @@
 
 </head>
 <body> 
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#4286F5; color:white">
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#4286F5; color:white">
         <div class="container" >
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header" >
@@ -26,33 +26,45 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Name Placeholder</a>
+                <a class="navbar-brand" href="/">Name Placeholder</a> 
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav" >
-                    <li>
-                         <a href="/arguments?utf8=✓&search=epistemology">Epistemology</a>
-                    </li>
-                    <li>
-                        <a href="/arguments?utf8=✓&search=logic">Logic</a>
-                    </li>
-                    <li>
-                        <a href="/arguments?utf8=✓&search=metaphysics">Metaphyics</a>
-                    </li>
-                    <li>
-                        <a href="/arguments?utf8=✓&search=ethics" >Ethics</a>
-                    </li>
-                    <li>
-                        <a href="/arguments?utf8=✓&search=ancient" >Ancient</a>
-                    </li>
 
+                    <li>
+                      <%= link_to "Browse all", arguments_path(:search => "") %>
+                    </li>
+                    <li>
+                      <%= link_to "Epistemology", arguments_path(:search => "epistemology") %>
+                    </li>
+                    <li>
+                      <%= link_to "Logic", arguments_path(:search => "logic") %>
+                    </li>
+                    <li>
+                        <%= link_to "Metaphyics", arguments_path(:search => "metaphysics") %>
+                    </li>
+                    <li>
+                        <%= link_to "Ethics", arguments_path(:search => "ethics") %>
+                    </li>
+                    <li>
+                        <%= link_to "Ancient", arguments_path(:search => "ancient") %>
+                    </li>
                 </ul>
 
-              <%= form_tag(arguments_path, method: 'get', class: 'navbar-form navbar-right') do %>
-                <%= search_field_tag 'search', nil, class: 'form-control', placeholder: 'Search'  %>
-                  <%= submit_tag "Submit", class: 'btn btn-default', :name => nil %>
-                  <% end %>
+
+
+                <%= form_tag(arguments_path, method: 'get', class: 'navbar-form navbar-right') do %>
+                  <%= search_field_tag 'search', nil, class: 'form-control', placeholder: 'Search'  %>
+                <% end %> 
+
+                
+
+
+                
+                   
+
+                
 
             </div>
             <!-- /.navbar-collapse -->
@@ -71,7 +83,5 @@
 	</div>
 
 </body>
-
-<%= debug(params) %>
 
 </html>

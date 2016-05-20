@@ -24,3 +24,9 @@ ol ol {list-style-type: lower-alpha;}
 ol ol ol {list-style-type:lower-roman;}
 ol ol ol ol {list-style-type:lower-greek;}
 ol ol ol ol ol{list-style-type:lower-roman;} 
+
+    .new-arg-fixedbutton {
+    position: fixed;
+    bottom: 10px;
+    right: 10px; 
+}
