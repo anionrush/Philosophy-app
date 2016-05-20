@@ -28,7 +28,15 @@ arguments.each do |argument|
 end
 
 3.times do
-
+	arguments.each do |argument|
+		argument.premises.each do |premise|
+			Premise.create!(
+				parent_premise: premise,
+				body: Faker::Hipster.sentence(10),
+				sub: false
+			)
+		end
+	end
 end
 
 300.times do 
