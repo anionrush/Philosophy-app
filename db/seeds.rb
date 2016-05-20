@@ -18,14 +18,17 @@ arguments.each do |argument|
 	argument.tag_list.add("#{list.sample}")
 	argument.save
 	argument.reload
-end
-
-300.times do
-	Premise.create!(
-		argument: arguments.sample,
+	3.times do
+		Premise.create!(
+		argument: argument,
 		body: Faker::Hipster.sentence(10),
 		sub: false
 		)
+	end
+end
+
+3.times do
+
 end
 
 300.times do 
