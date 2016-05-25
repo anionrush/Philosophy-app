@@ -21,7 +21,7 @@ arguments.each do |argument|
 	3.times do
 		Premise.create!(
 		argument: argument,
-		body: Faker::Hipster.sentence(10),
+		body: "EXAMPLE PREMISE OF RANDOM WORDS " + Faker::Hipster.sentence(10),
 		sub: false
 		)
 	end
@@ -32,7 +32,7 @@ end
 		argument.premises.each do |premise|
 			Premise.create!(
 				parent_premise: premise,
-				body: Faker::Hipster.sentence(10),
+				body: "EXAMPLE PREMISE OF RANDOM WORDS " + Faker::Hipster.sentence(10),
 				sub: false
 			)
 		end
@@ -42,7 +42,7 @@ end
 300.times do 
 	Premise.create!(
 		parent_premise: Premise.all.sample,
-		body: Faker::Hipster.sentence(10),
+		body: "EXAMPLE PREMISE OF RANDOM WORDS " + Faker::Hipster.sentence(10),
 		sub: false )
 end
 
@@ -50,7 +50,7 @@ end
 500.times do 
 	Premise.create!(
 		parent_premise: Premise.where(argument_id: nil).sample,
-		body: Faker::Hipster.sentence(10),
+		body: "EXAMPLE PREMISE OF RANDOM WORDS " + Faker::Hipster.sentence(10),
 		sub: false )
 end
 
