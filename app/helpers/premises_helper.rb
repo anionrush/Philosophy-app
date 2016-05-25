@@ -59,7 +59,7 @@ module PremisesHelper
           								<h3 class='modal-title'>#{premise.body}</h3>
 			                    <a href= 'premises/#{premise.id}/premises/new'> <button class='btn btn-lg btn-success'>Add Subpremise</button> </a>
 													<a href= 'premises/#{premise.id}/edit'><button class='btn btn-lg btn-warning'>Edit Premise</button> </a>
-													<a href= 'premises/#{premise.id}' data-confirm='Are you sure you want to delete this argument?' data-method='delete' rel='nofollow'><button class='btn btn-lg btn-danger'>Delete Premise</button> </a>
+													<a href= 'premises/#{premise.id}' data-confirm='Are you sure you want to delete this premise?' data-method='delete' rel='nofollow'><button class='btn btn-lg btn-danger'>Delete Premise</button> </a>
         								</div>
 								      </div>
 								    </div>
@@ -88,10 +88,10 @@ module PremisesHelper
       							<div class='modal-content'>
         							<div class='modal-header'>
           							<button type='button' class='close' data-dismiss='modal'> &times; </button>
-          							<h3 class='modal-title'> This is the heading #{sub_premise.id}</h3>
+          							<h3 class='modal-title'> #{sub_premise.body}</h3>
                     		<a href= 'premises/#{sub_premise.id}/premises/new'> <button class='btn btn-lg btn-success'>Add Subpremise</button> </a>
 												<a href= 'premises/#{sub_premise.id}/edit'><button class='btn btn-lg btn-warning'>Edit Premise</button> </a>
-												<a href= 'premises/#{sub_premise.id}/premises/new'><button class='btn btn-lg btn-danger'>Delete Premise</button> </a>
+												<a href= 'premises/#{sub_premise.id}' data-confirm='Are you sure you want to delete this premise?' data-method='delete' rel='nofollow'><button class='btn btn-lg btn-danger'>Delete Premise</button> </a>
         							</div>
       							</div>
     							</div>
